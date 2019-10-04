@@ -1,9 +1,18 @@
 #include <Arduino.h>
+#include "GenPulseWave.h"
+#include "DACWave.h"
+
+DACWave* myDac;
+
+#define PWM_PIN 3
 
 void setup() {
-  // put your setup code here, to run once:
+  myDac = new DACWave();
+  myDac->computeSine();
+  myDac->computeS_Dac();
+  myDac->printDebug();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  myDac->writeSignal();
 }
