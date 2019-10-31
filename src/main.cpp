@@ -1,18 +1,13 @@
 #include <Arduino.h>
-#include "GenPulseWave.h"
-#include "DACWave.h"
+#include "ASKModulationTX.h"
 
-DACWave* myDac;
+ASKModulationTX *ask;
 
-#define PWM_PIN 3
 
 void setup() {
-  myDac = new DACWave();
-  myDac->computeSine();
-  myDac->computeS_Dac();
-  myDac->printDebug();
+  ask = new ASKModulationTX();
 }
 
 void loop() {
-  myDac->writeSignal();
+  ask->send();
 }
